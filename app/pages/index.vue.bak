@@ -1,0 +1,456 @@
+<script setup lang="ts">
+const skills = [
+  { icon: 'i-simple-icons-vuedotjs', name: 'Vue.js', level: 'Expert' },
+  { icon: 'i-simple-icons-python', name: 'Python', level: 'Expert' },
+  { icon: 'i-simple-icons-typescript', name: 'TypeScript', level: 'Advanced' },
+  { icon: 'i-simple-icons-nuxtdotjs', name: 'Nuxt', level: 'Advanced' },
+  { icon: 'i-simple-icons-langchain', name: 'LangChain', level: 'Advanced' },
+  { icon: 'i-simple-icons-fastapi', name: 'FastAPI', level: 'Advanced' },
+  { icon: 'i-simple-icons-tailwindcss', name: 'Tailwind CSS', level: 'Advanced' },
+  { icon: 'i-simple-icons-postgresql', name: 'PostgreSQL', level: 'Advanced' },
+  { icon: 'i-simple-icons-supabase', name: 'Supabase', level: 'Advanced' },
+  { icon: 'i-simple-icons-microsoftazure', name: 'Azure', level: 'Intermediate' },
+  { icon: 'i-simple-icons-amazonaws', name: 'AWS Bedrock', level: 'Intermediate' },
+  { icon: 'i-simple-icons-docker', name: 'Docker', level: 'Intermediate' }
+]
+
+const experience = [
+  {
+    company: 'Barclays',
+    role: 'Technology Developer Intern – AI/ML',
+    period: 'June – August 2025',
+    location: 'Glasgow, Scotland',
+    bullets: [
+      'Worked in the Chief Technology Office on the AI/ML team, contributing to Barclays AI.',
+      'Developed an NLP-powered smart router to dynamically select relevant vector databases during the RAG phase, improving response relevancy with a multi-shot approach.',
+      'Built an AI Agent Evaluation framework measuring cost, latency, and chain-of-thought decision making.',
+      'Stack: Python, LangChain, LangGraph, AWS Bedrock.'
+    ]
+  },
+  {
+    company: 'Uniper',
+    role: 'Software Engineering Intern',
+    period: 'September 2023 – August 2024',
+    location: 'Birmingham, England',
+    bullets: [
+      'Revamped a full-stack trading application for the business division, doubling active users and significantly reducing load times through optimised data retrieval.',
+      'Built Vue.js frontends and Python/C# backends deployed on Azure Cloud.',
+      'Managed Postgres databases, designing SQL stored procedures for custom APIs.',
+      'Implemented Azure RBAC and scalable serverless architecture.',
+      'Earned Microsoft AZ-900: Azure Fundamentals certification.'
+    ]
+  }
+]
+
+const hackathons = [
+  {
+    event: 'HackEurope',
+    result: '🏆 1st Place – Monzo Fintech Track',
+    prize: '€1,000',
+    period: 'February 2026 · Dublin, Ireland',
+    description: 'Built Prophit in 30 hours – a spending prediction app that analyses your past transactions against public datasets (weather, events, calendar) to forecast tomorrow\'s spending. Judged by Monzo\'s CEO, Susquehanna, and Red Hat. 750+ competitors across Dublin, Paris, and Stockholm.',
+    slug: '/projects/prophit'
+  },
+  {
+    event: 'JP Morgan – Code for Good',
+    result: '🥈 2nd Place',
+    prize: '',
+    period: 'October 2024 · Glasgow, Scotland',
+    description: 'Built a website and mobile app for the environmental charity Another Way in 24 hours. Added gamification (XP systems, tasks, store) and a Python/BeautifulSoup web scraper for regional UK climate data. React Native frontend.'
+  }
+]
+
+const projects = [
+  {
+    slug: 'prophit',
+    title: 'Prophit',
+    tagline: 'HackEurope 2026 Winner – Monzo Fintech Track',
+    description: 'AI spending prediction app. Multi-LLM consensus engine, Solana savings arena, and voice briefings — built in 30 hours and judged by Monzo\'s CEO.',
+    tags: ['React Native', 'TypeScript', 'FastAPI', 'Supabase', 'Solana', 'Claude', 'Gemini'],
+    badge: '🏆 HackEurope Winner · €1,000',
+    github: 'https://github.com/elilourens/prophit',
+    featured: true
+  },
+  {
+    slug: 'hypa-thymesia',
+    title: 'SmartQuery',
+    tagline: 'smartquery.app — Semantic file search',
+    description: 'Search your files by their content — videos, images, and text. Find a video by describing a scene. MCP integration and Google Drive sync.',
+    tags: ['Python', 'FastAPI', 'Vue', 'TypeScript', 'Ragie', 'Docker'],
+    github: 'https://github.com/elilourens/hypa-thymesia',
+    demo: 'https://smartquery.app',
+    featured: false
+  },
+  {
+    slug: 'llmrecycler',
+    title: 'LLM Recycler',
+    tagline: 'Marketplace for LLM API keys',
+    description: 'Buy, sell, and proxy unused AI API credits. Stripe payments, Supabase backend, and a transparent Hono proxy layer.',
+    tags: ['TypeScript', 'Vue', 'Hono', 'Supabase', 'Stripe'],
+    github: 'https://github.com/elilourens/llmrecycler',
+    featured: false
+  },
+  {
+    slug: 'stirbot',
+    title: 'Stirbot',
+    tagline: 'University of Stirling AI chatbot',
+    description: 'Scrapes the University of Stirling website and answers student questions via a RAG pipeline. Admin mode enables live re-ingestion.',
+    tags: ['Python', 'Web Scraping', 'RAG', 'Chatbot'],
+    github: 'https://github.com/elilourens/stirbot',
+    featured: false
+  }
+]
+</script>
+
+<template>
+  <div>
+    <!-- Hero -->
+    <div class="relative overflow-hidden">
+      <!-- Decorative gradient blobs -->
+      <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div class="animate-pulse-slow absolute -top-32 left-1/2 -translate-x-1/2 h-[480px] w-[680px] rounded-full bg-primary/10 blur-3xl" />
+        <div class="absolute top-16 left-1/4 -translate-x-1/2 h-64 w-64 rounded-full bg-primary/5 blur-2xl" />
+        <div class="absolute top-8 right-1/4 translate-x-1/2 h-48 w-48 rounded-full bg-primary/8 blur-2xl" />
+      </div>
+
+      <UPageHero
+        title="Hi, I'm Eli Lourens."
+        description="Final-year Computing Science student at the University of Stirling. I build AI-powered applications — from NLP routers at Barclays to hackathon-winning fintech apps. Winner at HackEurope 2026."
+        :links="[
+          { label: 'View my work', to: '#projects', trailingIcon: 'i-lucide-arrow-down', size: 'xl' },
+          { label: 'Get in touch', to: '#contact', size: 'xl', color: 'neutral', variant: 'subtle' }
+        ]"
+        class="relative z-10 py-28 lg:py-36"
+      />
+    </div>
+
+    <!-- About -->
+    <UPageSection id="about">
+      <template #title>About me</template>
+      <template #description>CS student, AI engineer, and hackathon winner.</template>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start max-w-4xl mx-auto">
+        <!-- Profile card + quick facts -->
+        <div class="flex flex-col items-center md:items-start gap-6">
+          <!-- Profile photo with ring + glow -->
+          <div class="relative self-center md:self-start">
+            <div class="absolute -inset-1.5 rounded-full bg-gradient-to-br from-primary/30 to-primary/5 blur-md" />
+            <img
+              src="/eli.jpg"
+              alt="Eli Lourens"
+              class="relative rounded-full w-44 h-44 object-cover object-top ring-4 ring-primary/25 shadow-2xl"
+            />
+          </div>
+
+          <!-- Quick fact rows -->
+          <div class="w-full flex flex-col gap-2">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-elevated/60 border border-default/40 hover:border-primary/30 transition-colors">
+              <UIcon name="i-lucide-map-pin" class="text-primary size-4 shrink-0" />
+              <span class="text-sm text-muted">Stirling, Scotland (originally South Africa)</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-elevated/60 border border-default/40 hover:border-primary/30 transition-colors">
+              <UIcon name="i-lucide-graduation-cap" class="text-primary size-4 shrink-0" />
+              <span class="text-sm text-muted">BSc Computing Science, University of Stirling (2026)</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-elevated/60 border border-default/40 hover:border-primary/30 transition-colors">
+              <UIcon name="i-lucide-trophy" class="text-primary size-4 shrink-0" />
+              <span class="text-sm text-muted">HackEurope 2026 Winner · JP Morgan Code for Good 2nd</span>
+            </div>
+          </div>
+
+          <!-- Social links -->
+          <div class="flex gap-2">
+            <UButton
+              label="LinkedIn"
+              icon="i-simple-icons-linkedin"
+              to="https://www.linkedin.com/in/eli-lourens/"
+              target="_blank"
+              variant="outline"
+              color="neutral"
+              size="sm"
+            />
+            <UButton
+              label="GitHub"
+              icon="i-simple-icons-github"
+              to="https://github.com/elilourens"
+              target="_blank"
+              variant="outline"
+              color="neutral"
+              size="sm"
+            />
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="space-y-5 text-muted text-base leading-8">
+          <p>
+            I'm a South African developer based in Scotland, finishing my Computing Science degree at the University of Stirling in 2026. I specialise in AI and full-stack engineering — I've built NLP pipelines at Barclays, shipped production trading tools at Uniper, and won Europe's largest student hackathon.
+          </p>
+          <p>
+            At <strong class="text-foreground font-semibold">Barclays</strong> I built a smart RAG router and an AI agent evaluation framework using LangChain, LangGraph and AWS Bedrock. At <strong class="text-foreground font-semibold">Uniper</strong> I revamped a full-stack trading application, doubling active users with Vue.js, Python, C#, and Azure.
+          </p>
+          <p>
+            Outside work I build things that interest me: semantic file search, LLM marketplaces, and blockchain savings games. I also competed in the Bloomberg Trading Challenge representing my university, and spent a summer at Lingnan University in Hong Kong studying quantitative research methods.
+          </p>
+        </div>
+      </div>
+      <hr class="border-t border-default/30 max-w-5xl mx-auto mt-10" />
+    </UPageSection>
+
+    <!-- Experience -->
+    <UPageSection id="experience" class="bg-elevated/50">
+      <template #title>Experience</template>
+      <template #description>Where I've worked and what I built there.</template>
+
+      <div class="max-w-3xl mx-auto">
+        <div v-for="(job, i) in experience" :key="job.company" class="flex gap-8 pb-12 last:pb-0">
+          <!-- Timeline line + dot -->
+          <div class="flex flex-col items-center">
+            <div class="w-2.5 h-2.5 bg-primary mt-1.5 shrink-0"></div>
+            <div v-if="i < experience.length - 1" class="w-px bg-default/40 flex-1 mt-2"></div>
+          </div>
+          <!-- Content -->
+          <div class="flex-1 space-y-3 pb-2">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+              <div>
+                <h3 class="font-bold text-lg tracking-tight">{{ job.company }}</h3>
+                <p class="text-sm text-primary font-semibold">{{ job.role }}</p>
+              </div>
+              <div class="text-right shrink-0">
+                <p class="text-sm text-muted">{{ job.period }}</p>
+                <p class="text-xs text-muted">{{ job.location }}</p>
+              </div>
+            </div>
+            <ul class="space-y-1.5 text-sm text-muted">
+              <li v-for="bullet in job.bullets" :key="bullet" class="flex gap-2 items-start">
+                <UIcon name="i-lucide-chevron-right" class="text-primary size-4 mt-0.5 shrink-0" />
+                <span>{{ bullet }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t border-default/30 max-w-5xl mx-auto mt-10" />
+    </UPageSection>
+
+    <!-- Skills -->
+    <UPageSection id="skills">
+      <template #title>Skills &amp; Tools</template>
+      <template #description>Technologies I reach for on most projects.</template>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <UCard
+          v-for="skill in skills"
+          :key="skill.name"
+          class="flex flex-col items-center gap-3 py-6 px-4 text-center"
+        >
+          <UIcon :name="skill.icon" class="size-9 text-primary" />
+          <span class="text-sm font-semibold leading-tight">{{ skill.name }}</span>
+        </UCard>
+      </div>
+      <hr class="border-t border-default/30 max-w-5xl mx-auto mt-10" />
+    </UPageSection>
+
+    <!-- Hackathons -->
+    <UPageSection id="hackathons" class="bg-elevated/50">
+      <template #title>Hackathons</template>
+      <template #description>Building under pressure.</template>
+
+      <div class="max-w-3xl mx-auto space-y-5">
+        <UCard
+          v-for="h in hackathons"
+          :key="h.event"
+          :class="[
+            'space-y-3',
+            h.event === 'HackEurope' ? 'bg-primary/5 ring-1 ring-primary/20' : ''
+          ]"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <UIcon
+                v-if="h.event === 'HackEurope'"
+                name="i-lucide-trophy"
+                class="text-primary size-5 shrink-0"
+              />
+              <h3 class="font-bold text-base tracking-tight">{{ h.event }}</h3>
+              <UBadge :label="h.result" color="primary" variant="solid" size="sm" />
+              <UBadge v-if="h.prize" :label="h.prize" color="neutral" variant="outline" size="sm" />
+            </div>
+            <p class="text-xs text-muted shrink-0 pt-0.5">{{ h.period }}</p>
+          </div>
+          <p class="text-sm text-muted leading-relaxed">{{ h.description }}</p>
+          <NuxtLink v-if="h.slug" :to="h.slug">
+            <UButton label="Read more" trailingIcon="i-lucide-arrow-right" variant="subtle" size="sm" />
+          </NuxtLink>
+        </UCard>
+      </div>
+      <hr class="border-t border-default/30 max-w-5xl mx-auto mt-10" />
+    </UPageSection>
+
+    <!-- Startups -->
+    <UPageSection id="startups">
+      <template #title>Startups &amp; Side Projects</template>
+      <template #description>I build products, not just demos.</template>
+
+      <div class="max-w-4xl mx-auto space-y-8">
+        <p class="text-muted leading-loose text-base max-w-2xl">
+          Beyond hackathons and internships, I'm drawn to early-stage product building — turning an idea into something people actually use. I've shipped two live products with real users, and I'm always working on something new.
+        </p>
+
+        <!-- LLM Recycler highlight card -->
+        <div class="border border-default bg-elevated/40 p-8 space-y-5">
+          <div class="flex items-start justify-between gap-4 flex-wrap">
+            <div class="space-y-1">
+              <div class="flex items-center gap-3">
+                <UIcon name="i-lucide-recycle" class="text-primary size-6" />
+                <h3 class="text-xl font-bold tracking-tight">LLM Recycler</h3>
+              </div>
+              <p class="text-primary text-sm font-semibold">apirecycler.com — Marketplace for LLM API credits</p>
+            </div>
+            <div class="flex gap-2">
+              <UButton
+                to="https://apirecycler.com"
+                target="_blank"
+                icon="i-lucide-external-link"
+                label="Visit"
+                color="neutral"
+                variant="outline"
+                size="sm"
+              />
+              <UButton
+                to="https://github.com/elilourens/llmrecycler"
+                target="_blank"
+                icon="i-simple-icons-github"
+                label="GitHub"
+                color="neutral"
+                variant="ghost"
+                size="sm"
+              />
+            </div>
+          </div>
+
+          <p class="text-muted leading-relaxed">
+            Buy, sell, and proxy unused AI API credits. Many developers and companies have unused quota sitting idle — LLM Recycler creates a marketplace to trade those credits, with a transparent Hono proxy layer that validates and routes requests without ever exposing the underlying key.
+          </p>
+
+          <!-- Website screenshot -->
+          <div class="border border-default overflow-hidden">
+            <img
+              src="https://image.thum.io/get/width/1200/https://apirecycler.com"
+              alt="LLM Recycler — apirecycler.com"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+            <div class="px-4 py-2 bg-elevated/60 border-t border-default text-xs text-muted">
+              apirecycler.com
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            <UBadge v-for="t in ['TypeScript', 'Vue', 'Hono', 'Supabase', 'Stripe']" :key="t" :label="t" variant="subtle" size="sm" />
+          </div>
+        </div>
+      </div>
+      <hr class="border-t border-default/30 max-w-5xl mx-auto mt-10" />
+    </UPageSection>
+
+    <!-- Projects -->
+    <UPageSection id="projects">
+      <template #title>Projects</template>
+      <template #description>Things I've built — click for the full story.</template>
+
+      <div class="max-w-5xl mx-auto space-y-8">
+        <!-- Featured: Prophit hero card -->
+        <NuxtLink
+          v-for="project in projects.filter(p => p.featured)"
+          :key="project.slug"
+          :to="`/projects/${project.slug}`"
+          class="block group"
+        >
+          <UCard class="relative overflow-hidden border-primary/40 ring-1 ring-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent transition-all duration-300 group-hover:ring-primary/60 group-hover:shadow-xl group-hover:-translate-y-0.5">
+            <!-- Decorative top accent line -->
+            <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
+            <div class="flex flex-col md:flex-row md:items-center gap-6 pt-2">
+              <div class="flex-1 space-y-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <UBadge :label="project.badge" color="primary" variant="solid" class="font-semibold" />
+                  <UBadge label="Featured" color="neutral" variant="outline" size="sm" />
+                </div>
+                <h3 class="text-3xl font-extrabold tracking-tight">{{ project.title }}</h3>
+                <p class="text-sm text-primary font-semibold">{{ project.tagline }}</p>
+                <p class="text-sm text-muted leading-relaxed max-w-xl">{{ project.description }}</p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <UBadge v-for="tag in project.tags" :key="tag" :label="tag" variant="subtle" size="sm" />
+                </div>
+              </div>
+              <div class="flex md:flex-col gap-2 shrink-0">
+                <UButton label="Read more" trailingIcon="i-lucide-arrow-right" size="sm" />
+                <UButton :to="project.github" target="_blank" icon="i-simple-icons-github" label="GitHub" variant="outline" color="neutral" size="sm" @click.stop />
+              </div>
+            </div>
+          </UCard>
+        </NuxtLink>
+
+        <!-- Other projects -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <NuxtLink
+            v-for="project in projects.filter(p => !p.featured)"
+            :key="project.slug"
+            :to="`/projects/${project.slug}`"
+            class="block group h-full"
+          >
+            <UCard class="flex flex-col justify-between gap-4 h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
+              <div class="flex flex-col flex-1 space-y-2">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-semibold text-base">{{ project.title }}</h3>
+                  <UIcon name="i-lucide-folder-open" class="text-primary size-5 shrink-0" />
+                </div>
+                <p class="text-xs text-primary font-medium">{{ project.tagline }}</p>
+                <p class="text-sm text-muted leading-relaxed">{{ project.description }}</p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <UBadge v-for="tag in project.tags" :key="tag" :label="tag" variant="subtle" size="sm" />
+                </div>
+              </div>
+              <div class="flex gap-2 pt-2 border-t border-default/60 mt-auto">
+                <UButton label="Read more" trailingIcon="i-lucide-arrow-right" variant="subtle" size="sm" />
+                <UButton v-if="project.demo" :to="project.demo" target="_blank" icon="i-lucide-external-link" variant="ghost" color="neutral" size="sm" @click.stop />
+                <UButton :to="project.github" target="_blank" icon="i-simple-icons-github" variant="ghost" color="neutral" size="sm" @click.stop />
+              </div>
+            </UCard>
+          </NuxtLink>
+        </div>
+      </div>
+    </UPageSection>
+
+    <!-- Contact -->
+    <UPageSection id="contact" class="bg-elevated/50">
+      <div class="max-w-3xl mx-auto">
+        <div class="border-t border-default/60 mb-10" />
+        <UPageCTA
+          title="Let's work together."
+          description="Final year student open to grad roles, internships, and interesting projects. Let's chat."
+          variant="subtle"
+          class="rounded-2xl"
+          :links="[
+            {
+              label: 'elilourens123@gmail.com',
+              to: 'mailto:elilourens123@gmail.com',
+              icon: 'i-lucide-mail',
+              color: 'primary',
+              size: 'lg'
+            },
+            {
+              label: 'LinkedIn',
+              to: 'https://www.linkedin.com/in/eli-lourens/',
+              target: '_blank',
+              icon: 'i-simple-icons-linkedin',
+              color: 'neutral',
+              variant: 'outline',
+              size: 'lg'
+            }
+          ]"
+        />
+      </div>
+    </UPageSection>
+  </div>
+</template>
