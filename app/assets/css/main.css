@@ -5,15 +5,12 @@
   --font-sans: 'Space Grotesk', sans-serif;
 }
 
-@media (min-width: 768px) {
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #__nuxt {
-    height: 100%;
-  }
+html, body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
 }
 
 /* Hide scrollbars inside modals */

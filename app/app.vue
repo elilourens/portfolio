@@ -30,7 +30,7 @@ const navLinks = [
 </script>
 
 <template>
-  <UApp class="md:flex md:flex-col md:h-screen">
+  <UApp>
     <UHeader>
       <template #left>
         <NuxtLink to="/" class="font-semibold text-base tracking-tight">
@@ -62,7 +62,7 @@ const navLinks = [
       </template>
     </UHeader>
 
-    <UMain class="md:flex-1 md:overflow-hidden md:min-h-0 md:h-full">
+    <UMain>
       <NuxtPage />
     </UMain>
   </UApp>
